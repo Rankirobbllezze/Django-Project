@@ -8,8 +8,8 @@
     <h4 class="task1">Add a Tasker</h4>
     <form action="{%url 'add_tasker'%}" method="post">
           {% csrf_token %}
-    <input type="text" name="user_tasker" placeholder="New Tasker" style="width: 100%" > <br> <br>
-        <input type="email" name="user_email" placeholder="Email" style="width: 100%" > <br> <br>
+    <input type="text" name="user_tasker" placeholder="New Tasker" class="new"  > <br> <br>
+        <input type="email" name="user_email" placeholder="Email" class="new" > <br> <br>
         <span>
             <button type="submit" style="width: 100%" class="task2" >Add Tasker</button >
         </span>
@@ -21,9 +21,9 @@
 {#form: the action attributes indicates the file to process#}
     <form action="{% url 'add_task' %}" method="post">
     {% csrf_token %}
-        <input type="text" name="task" placeholder="New Task" width="50%" style="width: 100%" > <br> <br> <br>
+        <input type="text" name="task" placeholder="New Task" width="50%" class="new" > <br> <br> <br>
 {#        this is the taskers dropdown#}
-        <select name="tasker" style="width: 100%"> <br>
+        <select name="tasker" class="new"> <br>
             <option value="" >Select a Tasker</option>
             {% for tasker in taskers %}
               <option value="{{ tasker.id }}">
@@ -43,6 +43,7 @@
     <br>
 {#    create the list#}
     <h4>My tasks </h4>
+        <span class="whole1">
         <ul>
            {% for task in tasks %}
                <li>`
@@ -81,5 +82,8 @@
         </ul>
 
 {% endblock %}
+
+
+        </span>
 
 
