@@ -126,6 +126,7 @@ In the app project create a serializers.py
 
 ### JSON (JavaScript Object Notation)
 This is an interchangeable data format that can be used across any application
+
   
 
 FrontEnd(HTML <CSS (web) , Android(Jetpack compose) , React Native ,
