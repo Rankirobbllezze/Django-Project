@@ -71,6 +71,64 @@ Organized collection of data that allows users to store, retrieve update and del
 ###STEPS TO AD A DATA SOURCE
 1. Double click on the db.sqlite3
 2. Or simply from the pycharm selact the database icon
-3. click the + sin or the prompt to create the data source (for development use sqlite3)
+3. click the + sign or the prompt to create the data source (for development use sqlite3)
 
+### RELATIONAL DATABASES : DATABASES RELATIONSHIP
+1. One to Many Relationship
+   -Taskers table (Contains the users who will perform the tasks)
+   -Task table (contains the tasks)
+To establish a one to many relationship establish a Foreignkey
+2. Many to Many
+
+### HOW TO ADD IMAGES (STATIC)
+Django uses static directory
+Project root directory/ => static/ => images/
+Add {% load static %} at the top of the html file
+AdD this to settings.py
+STATIC
+
+
+
+### DJANGO ADMIN
+Create a super user for content management purposes
+1. Register your models in admin.py
+2. Creating a super admin user for the project
+
+python manage.py createsuperuser
+3. Visit the link appurl/admin - use the superuser credentials to login
+
+### DJANGO APIs(Application Programming Interface)
+Is a set of rules that allows different software apps to communicate with each other
+
+### Think of ana API as a waiter ia a restaurant
+1. You(Fronted/client) make an order(request)
+2. The waiter(API) takes the request to the kitchen(sever/backend)
+3. The kitchen(SERVER) prepares the food(process the request)
+4. The waiter(API) brings back the meal (response) to you
+
+### TYPES OT APIS
+1. REST API => Uses HTTP methods ::
+  - GET :: use this to request data from servers (DEFAULT)
+  - POST :: use to save or send data to servers
+  - PUT :: use this to update on data on server
+  - PATCH:: use this to update only a section of your data
+  - DELETE :: USE THIS TO REMOVE DATA FROM YOUR SERVER
+2. GraphQL API => Allows clients/fronted to access data only when needed
+3. SOAP API => Uses XML methods / older (SECURE)
+4. WebSocket API => Enable real data transfer (chat application)
+
+### Steps to create an Api project in DJANGO
+1. Install djangorestframework :: pip install djangorestframework
+2. Add djangorestframework as part of the installed apps
+3. Have views return data as . json files
+4. CREATE serializers (picking the data to showcase from the API)
+In the app project create a serializers.py
+
+### JSON (JavaScript Object Notation)
+This is an interchangeable data format that can be used across any application
+  
+
+FrontEnd(HTML <CSS (web) , Android(Jetpack compose) , React Native ,
+Reactjs)
+=> middleware => backend (server scripting (python->django), database)
 

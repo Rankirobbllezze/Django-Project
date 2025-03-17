@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Task
+from .models import Task,Taskers
 
 # Create your views here.
 """ these functionalities take care of CRUD :-) """
@@ -12,15 +12,32 @@ def task_list(request):
     # tasks = request.session.get('tasks', [])
     #fetching tasks from DB
     tasks = Task.objects.all()
+    taskers = Taskers.objects.all()
     # the render function returns a .html template
-    return render(request, 'todolistapp/task_list.html', {"tasks" : tasks})
+    return render(request, 'todolistapp/task_list.html', {"tasks" : tasks, "taskers":taskers})
+
+def add_tasker(request):
+    """ adds a new task"""
+    if request.method == "POST":
+        username = request.POST.get('user_tasker')
+        email = request.POST.get('user_email')
+        # save to db table
+        if username:
+            Taskers.objects.create(username=username, email=email)
+    return redirect('task_list')
 def add_task(request):
     """add new task to db table"""
     if request.method == "POST":
         title = request.POST.get('task')
+        tasker_id = request.POST.get('tasker')
         #save to db
         if title:
-            Task.objects.create(title=title)
+            # validating the id entered
+            tasker = Taskers.objects.get(id=tasker_id) if tasker_id else None
+            Task.objects.create(title=title,tasker=tasker)
+            messages.success(request, 'Tasker and Task added successfully')
+        else:
+            messages.error(request, 'Please enter a valid tasker')
     return redirect('task_list')
 
 
@@ -48,6 +65,7 @@ def add_task(request):
 def delete_task(request, task_id):
     """delete task from db table"""
     Task.objects.filter(id=task_id).delete()
+
     return redirect('task_list')
 
 # def delete_task(request, index):

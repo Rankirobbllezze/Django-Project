@@ -1,30 +1,85 @@
 {% extends 'todolistapp/base.html' %}
+{% load static %}
 {% block content %}
+
+        <img src="{% static 'images/global.jpg' %}" width="500" height="300"/>
+{#    create a form to register taskers#}
+    <h3 class="head">Task Manager</h3>
+    <h4 class="task1">Add a Tasker</h4>
+    <form action="{%url 'add_tasker'%}" method="post">
+          {% csrf_token %}
+    <input type="text" name="user_tasker" placeholder="New Tasker" style="width: 100%" > <br> <br>
+        <input type="email" name="user_email" placeholder="Email" style="width: 100%" > <br> <br>
+        <span>
+            <button type="submit" style="width: 100%" class="task2" >Add Tasker</button >
+        </span>
+        
+    </form>
+
+    <br>
+    <h4 class="task1">Add a Task</h4>
 {#form: the action attributes indicates the file to process#}
     <form action="{% url 'add_task' %}" method="post">
     {% csrf_token %}
-        <input type="text" name="task" placeholder="New Task">
-        <button type="submit">Add Task</button>
+        <input type="text" name="task" placeholder="New Task" width="50%" style="width: 100%" > <br> <br> <br>
+{#        this is the taskers dropdown#}
+        <select name="tasker" style="width: 100%"> <br>
+            <option value="" >Select a Tasker</option>
+            {% for tasker in taskers %}
+              <option value="{{ tasker.id }}">
+                {{ tasker.username }}
+              </option>
+            {% endfor %}
+
+        </select> <br>
+
+
+        <button type="submit" style="width: 100% " class="task2
+">Add Task</button>
+        <br> <br> <br>
 
 
     </form>
+    <br>
 {#    create the list#}
-    <h4>My tasks</h4>
+    <h4>My tasks </h4>
         <ul>
            {% for task in tasks %}
                <li>`
                    {{ task.title }} - completed {{ task.completed }}
-                   {% if task.completed %}
+                    <span> <br>
+                        <span id="span1">
+                            - Assigned to - {{ task.tasker.username }} <br>
+                        </span>
+
+                        <span id="span5" style="background-color: yellow"> <br>
+
+                        - Email to - {{ task.tasker.email }}
+                        </span>
+                    </span> <br>
+                    <span id="floatspan">
+                        {% if task.completed %}
                        Completed
                    {% else %}
-                       <a href="{% url 'mark_complete' task.id %}">Mark As Done</a>
+                       <a href="{% url 'mark_complete' task.id %}">
+
+                       <button class="complete" style="background-color: blue">Complete</button>
+                       </a>
                    {% endif %}
-                   <a href="{% url 'delete_task' task.id %}">Delete This Task</a>
+                   <a href="{% url 'delete_task' task.id %}">
+                       <button class="complete">Delete </button>
+
+                   </a>
+                    </span>
+
+
                </li>
 {#               show this on no task#}
              {% empty %}
-               <li>NO TASKS AVAILABLE</li>
+               <li class="end">NO TASKS AVAILABLE</li>
            {% endfor %}
         </ul>
 
 {% endblock %}
+
+
