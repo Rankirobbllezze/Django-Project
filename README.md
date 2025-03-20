@@ -41,8 +41,8 @@ THIS IA SYNTAX USED TO CREATE DJANGO INTERFACES
 ### STEPS TO INCLUDE DB PERSISTENCY FOR PROJECTS IN DJANGO
 MODELS.PY :converted to db tables by django
 After defining our models.py
-1. python manage.py makemigrations appname
-2. python manage.py migrate
+1. python3 manage.py makemigrations todolistapp appname
+2. python3 manage.py migrate
 3. 
 ### DATABASES
 Organized collection of data that allows users to store, retrieve update and delete information moore efficiently

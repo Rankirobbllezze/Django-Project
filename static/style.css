@@ -1,0 +1,50 @@
+body {
+    background-color: #f8f9fa;
+    font-size: 16px;
+}
+
+.card {
+    border-radius: 10px;
+    background: black;
+    color: #f8f9fa;
+    font-size: 16px;
+}
+
+.form-control {
+    border-radius:5px;
+}
+.form-label{
+    font-size: 16px;
+}
+/* Styles for small screens (phones) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    form {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+/* Styles for tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    form {
+        width: 70%;
+    }
+}
+
+/* Styles for desktops */
+@media (min-width: 1025px) {
+    form {
+        width:50%;
+}
+}
+.nav-link{
+    border: black;
+    color: #f8f9fa;
+    font-size: 19px;
+}
+#tit{
+    font-style: italic;
+}

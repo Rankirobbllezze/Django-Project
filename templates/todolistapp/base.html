@@ -1,8 +1,11 @@
+{% load static %}
+{% include 'todolistapp/navbar.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>TO-DO LIST</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <style>
         #floatspan{
             float: right;
@@ -16,18 +19,19 @@
 
         }
         .task1{
-            background-color: lawngreen;
+            background-color: black;
             border: 10px;
             justify-content: center;
             margin: 0;
             height: 50px;
             font-size: 22px;
+            color: aliceblue;
 
         }
         .head{
             align-items: center;
             justify-content: center;
-            float: center;
+
         }
         .end{
             color: red;

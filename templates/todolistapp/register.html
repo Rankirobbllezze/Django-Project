@@ -5,20 +5,46 @@
     <title>Todolist Register</title>
 </head>
 <body>
-<h2>Register</h2>
-{#collect user data#}
-<form enctype="multipart/form-data" method="post" action="{% url 'register' %}">
-    {% csrf_token %}
-{#    this part loads appropriate form as in views#}
-      {% for field in form %}
-          <label> {{ field.label }} </label>
-          {{ field }}
-          <small>{{ field.errors }}</small>
+{% extends 'todolistapp/base.html' %}
 
+{% block title %}Register{% endblock %}
 
-    {% endfor %}
-    <button type="submit">Sign Up</button>
-</form>
-<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card p-4 shadow" style="width: 400px;">
+        <h3 class="text-center mb-3">Register</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" name="phone_number">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Profile Picture</label>
+                <input type="file" class="form-control" name="profile_picture">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password1" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="password2" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Sign Up</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</div>
+{%endblock%}
+
 </body>
 </html>
