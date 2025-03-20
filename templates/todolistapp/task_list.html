@@ -3,6 +3,10 @@
 {% block content %}
 
         <img src="{% static 'images/global.jpg' %}" width="500" height="300"/>
+{#    activating the logout#}
+    <span>
+          <a href="{% url 'logout' %}"> Logout </a>
+    </span>
 {#    create a form to register taskers#}
     <h3 class="head">Task Manager</h3>
     <h4 class="task1">Add a Tasker</h4>

@@ -127,7 +127,56 @@ In the app project create a serializers.py
 ### JSON (JavaScript Object Notation)
 This is an interchangeable data format that can be used across any application
 
-  
+
+###     AUTHENTICATION AND AUTHORIZATION
+- Authentication :: IDENTITY MANAGEMENT :: Who is using the app
+- Authorization :: USER PRIVILEDGES :: What user can do once authorized
+
+### STEP IN CREATING AUTHENTICATION MODULE
+1. Within settings.py of the project modify the authentication settings
+  a. LOGIN_URL :: ## redirect unauthenticated users back to the login screen
+  b. LOGIN_REDIRECT_URL :: After login what page will the user see
+  c. LOGOUT_REDIRECT_URL :: ## After logout, redirect user back to login screen
+2. Create views function for the register, login and logout processes
+3. Create the rendered/redirected templates
+4. Register the urls to map the authentication functions in views
+5. Do migrations :: python3 manage.py migrate
+
+### EXTENDING THE DJANGO AUTH USER 
+1. I mport the class AbstractUser in our models.py
+2. Create the custom user class, name should be customUser
+3. Tell djongo to use the custom model for the user
+4. Update our forms to also use the custom model
+    a. crate a form.py in the app folder, write out our custom user form
+5. Update the views functions to use the custom model
+6. Updating the templates to reflect the new inputs :: register.html
+7. Ensure that our django can handle media
+     a. inside settings.py media_url, media_root
+     b. urls.py include the media reference as part of te urlpatterns
+8. Reset the database and make new migrations 
+     - delete the migration.py file in the migration folder
+     - Delete the db.sqlite file
+     - python3 manage.py makemigrations todolistapp (appname)
+     - python3 manage.py migrate
+     - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 FrontEnd(HTML <CSS (web) , Android(Jetpack compose) , React Native ,
 Reactjs)

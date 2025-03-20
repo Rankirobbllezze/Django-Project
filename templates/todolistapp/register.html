@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todolist Register</title>
+</head>
+<body>
+<h2>Register</h2>
+{#collect user data#}
+<form enctype="multipart/form-data" method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+{#    this part loads appropriate form as in views#}
+      {% for field in form %}
+          <label> {{ field.label }} </label>
+          {{ field }}
+          <small>{{ field.errors }}</small>
+
+
+    {% endfor %}
+    <button type="submit">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</body>
+</html>

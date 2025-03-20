@@ -74,6 +74,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todolist.wsgi.application'
 
+## AUTHENTICATION URLs
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = ""
+LOGOUT_REDIRECT_URL = "login"
+AUTH_USER_MODEL = 'todolistapp.CustomUser'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -81,7 +89,8 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "NAME": BASE_DIR / 'db.sqlite3',
+
     }
 }
 
