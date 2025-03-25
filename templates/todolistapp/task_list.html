@@ -17,10 +17,10 @@
           <a class="nav-link active" href="{% url 'task_list' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="contact.html">Contact</a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
@@ -42,13 +42,18 @@
 
 
         <img src="{% static 'images/global.jpg' %}" width="500" height="300"/>
+        <img src="{{ user.profile_picture.url }}" alt="" width="500" height="300" border="12px">
 {#    activating the logout#}
 
 
 
 {#    create a form to register taskers#}
-    <h3 class="head">Task Manager</h3>
+        {#    create our logged in user#}
+{#    In jinja templating we have access to the {{ user }} object}}#}
+    <h4>Welcome to the Todolistapp {{ user.username }} </h4>
+<h3 class="head">Task Manager</h3>
     <h4 class="task1">Add a Tasker</h4>
+
     <form action="{%url 'add_tasker'%}" method="post">
           {% csrf_token %}
     <input type="text" name="user_tasker" placeholder="New Tasker" class="new"  > <br> <br>
